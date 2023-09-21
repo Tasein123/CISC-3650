@@ -1,0 +1,52 @@
+<head>
+    <body style=" background-color:rgba(173, 118, 143, 0.55);font-family: 'Times New Roman', Times, serif;">
+
+  </head>
+  <body> 
+    <form>
+      <label for="kg">Enter new note:</label>
+      <input type="text" id="nn" name="nn">
+      <br>
+      <label for="lbs">Enter weight in pounds:</label>
+      <input type="number" id="lbs" name="lbs">
+      <br>
+      <label>Conversion Options:</label>
+      <br>
+      <input type="radio" id="kgToLbs" name="direction" value="kgToLbs">
+      <label for="kgToLbs">Kilograms to Pounds</label>
+      <br>
+      <input type="radio" id="lbsToKg" name="direction" value="lbsToKg">
+      <label for="lbsToKg">Pounds to Kilograms</label>
+      <br>
+      <input type="submit" value="Submit">
+      <input type="reset" value="Reset">
+    </form>
+
+    <footer style="position: fixed; left: 0; bottom: 0; width: 100%; text-align: center;">
+        <a href="https://tasein123.github.io/CISC-3650/"> Back to Main Page </a>
+    </footer>
+
+  </body>
+  <script>
+    const form = document.querySelector('form');
+  
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      
+      const kgInput = form.elements['kg'];
+      const lbsInput = form.elements['lbs'];
+      const direction = form.elements['direction'].value;
+  
+      let kg, lbs;
+  
+      if (direction === 'kgToLbs') {
+        kg = Number(kgInput.value);
+        lbs = kg * 2.20462;
+        lbsInput.value = lbs.toFixed(2);
+      } else if (direction === 'lbsToKg') {
+        lbs = Number(lbsInput.value);
+        kg = lbs / 2.20462;
+        kgInput.value = kg.toFixed(2);
+      }
+    });
+  </script>
