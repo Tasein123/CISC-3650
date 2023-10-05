@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    Abdul Tasin CISC3650 Projects
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UV_Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To Do List</title>
+    <link rel="stylesheet" href="tdl.css">
+    <script src="tdl.js" defer></script>
 </head>
-
-<body style="background-color:lavender"></bodystyle>
-
-    <h3> PROJECTS </h3>
-    <ul>
-        <li> <a href=""> Project#1 Website Project </a> </li>
-
-    </ul>
-
-
+<body>
+    <div id="items"></div>
+    <template id="itemTemplate">
+        <div class="Item">
+            <input type="checkbox" class="item-completed">
+            <input type="text" class="item-description" placeholder="To Do Item">
+        </div>
+    </template>
+    <button id="add">Add Item</button>  
 </body>
-
 </html>
