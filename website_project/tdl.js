@@ -1,5 +1,5 @@
 const ITEMS_CONTAINER = document.getElementById("items");
-const ITEMS_TEMPLATE = document.getElementById("itemTemplate");
+const ITEM_TEMPLATE = document.getElementById("itemTemplate");
 const ADD_BUTTON = document.getElementById("add");
 
 let items = getItems();
@@ -11,7 +11,7 @@ function getItems(){
 }
 
 function setItems(items){
-    const itemsJson = JSON.stringfly(items);
+    const itemsJson = JSON.stringify(items);
 
     localStorage.setItem("todo", itemsJson);
 }
@@ -29,17 +29,27 @@ function addItem(){
 function updateItem(item, key, value){
     item[key] = value;
 
-    setItems(item);
+    setItems(items);
     refreshList();
 }
 
 function refreshList(){
-    //TODO SORT ITEMS
+    items.sort((a, b) => {
+        if (a.completed){
+            return 1;
+        }
+
+        if (b.completed){
+            return -1;
+        }
+
+        return a.description < b.description ? -1 : 1;
+    });
 
     ITEMS_CONTAINER.innerHTML = "";
 
-    for(const item of item){
-        const itemElement = ITEMS_TEMPLATE.content.cloneNode(true);
+    for(const item of items){
+        const itemElement = ITEM_TEMPLATE.content.cloneNode(true);
         const descriptionInput = itemElement.querySelector(".item-description");
         const completedInput = itemElement.querySelector(".item-completed");
 
@@ -47,7 +57,11 @@ function refreshList(){
         completedInput.checked = item.description;
 
         descriptionInput.addEventListener("change", () => {
-            updateItem(item, "completed", completedInput.checked)
+            updateItem(item, "description", descriptionInput.value);
+        });
+
+        descriptionInput.addEventListener("change", () => {
+            updateItem(item, "completed", completedInput.checked);
         });
 
         ITEMS_CONTAINER.append(itemElement);
