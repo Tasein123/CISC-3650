@@ -18,7 +18,7 @@ function setItems(items){
 
 function addItem(){
     items.unshift({
-        description: "",
+        description: " ",
         completed: false
     });
 
