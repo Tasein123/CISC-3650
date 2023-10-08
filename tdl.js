@@ -1,6 +1,8 @@
 const ITEMS_CONTAINER = document.getElementById("items");
 const ITEM_TEMPLATE = document.getElementById("itemTemplate");
 const ADD_BUTTON = document.getElementById("add");
+const DELETE_BUTTON = document.getElementsByClassName("delete");
+
 
 let items = getItems();
 
@@ -46,7 +48,7 @@ function refreshList(){
         return a.description < b.description ? -1 : 1;
     }); 
 
-    ITEMS_CONTAINER.innerHTML = "";
+    ITEMS_CONTAINER.innerHTML = " ";
 
     for(const item of items){
         const itemElement = ITEM_TEMPLATE.content.cloneNode(true);
@@ -60,7 +62,7 @@ function refreshList(){
             updateItem(item, "description", descriptionInput.value);
         });
 
-        descriptionInput.addEventListener("change", () => {
+        completedInput.addEventListener("change", () => {
             updateItem(item, "completed", completedInput.checked);
         });
 
@@ -71,5 +73,12 @@ function refreshList(){
 ADD_BUTTON.addEventListener("click", () => {
     addItem();
 });
+
+/*DELETE_BUTTON.addEventListener("click", () => {
+    item.remove;
+});*/
+
+
+
 
 refreshList();

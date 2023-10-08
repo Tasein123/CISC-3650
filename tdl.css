@@ -16,3 +16,10 @@
     background: seagreen;
     cursor: pointer;
 }
+
+.delete {
+    font-weight: bold;
+    color: brown;
+    background: white;
+    cursor: pointer;
+}
