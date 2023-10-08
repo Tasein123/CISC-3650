@@ -72,4 +72,4 @@ ADD_BUTTON.addEventListener("click", () => {
     addItem();
 });
 
-refreshList;
+refreshList();
