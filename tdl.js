@@ -44,7 +44,7 @@ function refreshList(){
         }
 
         return a.description < b.description ? -1 : 1;
-    });
+    }); 
 
     ITEMS_CONTAINER.innerHTML = "";
 
@@ -54,7 +54,7 @@ function refreshList(){
         const completedInput = itemElement.querySelector(".item-completed");
 
         descriptionInput.value = item.description;
-        completedInput.checked = item.description;
+        completedInput.checked = item.completed;
 
         descriptionInput.addEventListener("change", () => {
             updateItem(item, "description", descriptionInput.value);
